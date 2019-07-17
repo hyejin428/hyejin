@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.junit.Assert.*;
 
 public class ChampionTest {
@@ -63,8 +63,10 @@ public class ChampionTest {
         String sampleString2 = "Player point";
         String startString = "Player";
         String endString = "point";
-//        assertThat(sampleString1, anyOf(startsWith(startString), containsString(endString)));
-//        assertThat(sampleString2, is(endsWith(endString)));
+        assertThat(sampleString1, anyOf(endsWith(endString), containsString(endString), containsString(startString)));
+        assertThat(sampleString2, anyOf(endsWith(endString), endsWith("aaa")));
+        assertThat(sampleString2, is(startsWith(startString)));
+
     }
 
     //부동소수점 범위 closeTo 테스트
